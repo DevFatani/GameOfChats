@@ -14,6 +14,7 @@
 		1335EB0A2234F78800B27C94 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335EB092234F78800B27C94 /* Message.swift */; };
 		1336413622207D09009EA159 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1336413522207D09009EA159 /* GoogleService-Info.plist */; };
 		1339A14B223CCB0C00CEC657 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1339A14A223CCB0C00CEC657 /* ChatMessageCell.swift */; };
+		139662B1224DEE120045FFB0 /* ChatInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139662B0224DEE120045FFB0 /* ChatInputContainerView.swift */; };
 		13ADED372233F94300FC9F81 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADED362233F94300FC9F81 /* ChatLogController.swift */; };
 		13B30B57221FECE500E72680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30B56221FECE500E72680 /* AppDelegate.swift */; };
 		13B30B59221FECE500E72680 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30B58221FECE500E72680 /* MessagesController.swift */; };
@@ -33,6 +34,7 @@
 		1335EB092234F78800B27C94 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		1336413522207D09009EA159 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1339A14A223CCB0C00CEC657 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		139662B0224DEE120045FFB0 /* ChatInputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputContainerView.swift; sourceTree = "<group>"; };
 		13ADED362233F94300FC9F81 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		13B30B53221FECE500E72680 /* gameofchats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gameofchats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B30B56221FECE500E72680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				13C9D81E2239697A00757025 /* UserCell.swift */,
 				1339A14A223CCB0C00CEC657 /* ChatMessageCell.swift */,
+				139662B0224DEE120045FFB0 /* ChatInputContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,7 +249,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-gameofchats/Pods-gameofchats-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-gameofchats/Pods-gameofchats-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -263,7 +266,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gameofchats/Pods-gameofchats-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gameofchats/Pods-gameofchats-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13ADED372233F94300FC9F81 /* ChatLogController.swift in Sources */,
+				139662B1224DEE120045FFB0 /* ChatInputContainerView.swift in Sources */,
 				132E6F102223D975007F2F05 /* NewMessageController.swift in Sources */,
 				13B30B59221FECE500E72680 /* MessagesController.swift in Sources */,
 				1335EB0A2234F78800B27C94 /* Message.swift in Sources */,

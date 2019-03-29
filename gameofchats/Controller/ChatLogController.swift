@@ -52,14 +52,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         }
     }
     
-    lazy var inputTf:UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter Message ..."
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.delegate = self
-        tf.backgroundColor = .white
-        return tf
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,56 +79,10 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     
-    lazy var inputContainerView: UIView = {
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-        containerView.backgroundColor = .white
-     
-        let sendBtn = UIButton(type: .system)
-        sendBtn.setTitle("send", for: .normal)
-        sendBtn.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
-        sendBtn.translatesAutoresizingMaskIntoConstraints = false
-        
-        let uploadImageView = UIImageView()
-        uploadImageView.isUserInteractionEnabled = true
-        uploadImageView.translatesAutoresizingMaskIntoConstraints = false
-        uploadImageView.image = UIImage(named: "logo")
-        uploadImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleUploadTap)))
-        
-        
-        containerView.addSubview(sendBtn)
-        containerView.addSubview(inputTf)
-        containerView.addSubview(uploadImageView)
-        
-        
-        let speratorLineView = UIView()
-        speratorLineView.translatesAutoresizingMaskIntoConstraints = false
-        speratorLineView.backgroundColor = UIColor(r: 220, g: 220, b: 220)
-        
-        containerView.addSubview(speratorLineView)
-        
-        NSLayoutConstraint.activate([
-            sendBtn.rightAnchor.constraint(equalTo: containerView.rightAnchor),
-            sendBtn.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            sendBtn.widthAnchor.constraint(equalToConstant: 80),
-            sendBtn.heightAnchor.constraint(equalToConstant: 50),
-            
-            inputTf.leftAnchor.constraint(equalTo: uploadImageView.rightAnchor, constant: 8),
-            inputTf.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            inputTf.rightAnchor.constraint(equalTo: sendBtn.leftAnchor),
-            inputTf.heightAnchor.constraint(equalToConstant: 50),
-            
-            speratorLineView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            speratorLineView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
-            speratorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor),
-            speratorLineView.heightAnchor.constraint(equalToConstant: 1),
-            
-            uploadImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
-            uploadImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            uploadImageView.widthAnchor.constraint(equalToConstant: 44),
-            uploadImageView.heightAnchor.constraint(equalToConstant: 44),
-            ])
-        
-        return containerView
+    lazy var inputContainerView: ChatInputContainerView = {
+        let chatInputContainerView = ChatInputContainerView(frame:  CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        chatInputContainerView.chatLog = self
+        return chatInputContainerView
     }()
     
     @objc func handleUploadTap() {
@@ -358,7 +305,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
    
     @objc func handleSend() {
-        let values: [String : Any] = ["text": inputTf.text!]
+        let values: [String : Any] = ["text": inputContainerView.inputTf.text!]
         sendMessageWith(properties: values)
     }
     
@@ -390,7 +337,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
                 return
             }
             
-            self.inputTf.text = nil
+            self.inputContainerView.inputTf.text = nil
             
             let messageId = ref.key!
             Database.database().reference().child("user-messages").child(fromId).child(toId).updateChildValues([messageId: 1])
@@ -398,11 +345,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             Database.database().reference().child("user-messages").child(toId).child(fromId).updateChildValues([messageId: 1])
         }
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleSend()
-        return true
-    }
+   
     
     
     var startingFrame: CGRect?
